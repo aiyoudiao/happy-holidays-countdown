@@ -89,6 +89,7 @@ function init() {
             lDate,
             gzYear,
             animal,
+            time: new Date(`${year}/${month}/${day}`).getTime(),
           });
         }
       });

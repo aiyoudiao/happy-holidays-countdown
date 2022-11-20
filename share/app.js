@@ -81,10 +81,10 @@ export const createAllElement = () => {
 const initTimerList = () => {
   const list = [...festivalJSon];
   list.forEach((item, index) => {
-    const { year, month, day } = item;
+    const { time } = item;
     const timer = new CountdownTimer({
       selector: `#holidayCountdown${index}`,
-      targetDate: new Date(`${year}-${month}-${day} 00:00:00`),
+      targetDate: new Date(time),
     });
     timer.startTimer();
   });
