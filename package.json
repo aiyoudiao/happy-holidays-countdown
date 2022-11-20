@@ -1,0 +1,25 @@
+{
+  "name": "happy-holidays-countdown",
+  "private": true,
+  "version": "0.1.0",
+  "homepage": "https://aiyoudiao.github.io/happy-holidays-countdown",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "init": "node ./get-script/init.js",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0",
+    "vite": "^3.1.0",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "zlib": "^1.0.5"
+  },
+  "dependencies": {
+    "jquery": "^3.6.1"
+  }
+}
