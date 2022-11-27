@@ -6,10 +6,10 @@ class CountdownTimer {
     foregroundColor = null,
   }) {
     this.selector = selector;
-    console.log("selector@", selector);
     this.targetDate = targetDate;
     this.backgroundColor = backgroundColor;
     this.foregroundColor = foregroundColor;
+    this.interval = null;
 
     this.refs = {
       days: document.querySelector(`${this.selector} [data-value="days"]`),
@@ -59,20 +59,16 @@ class CountdownTimer {
   }
 
   startTimer() {
-    //const timer = this.getTimeRemaining(this.targetDate);
-    //this.updateTimer(timer);
-    //this.updateColors();
-
-    var interval = setInterval(() => {
+    if (this.interval) {
+      this.stopTimer();
+    }
+    this.interval = setInterval(() => {
       const timer = this.getTimeRemaining(this.targetDate);
-      // if (timer.total <= 0) {
-      //   this.updateTimer(0, 0, 0, 0);
-      //   // startConfetti();
-      //   clearInterval(interval);
-      // } else {
       this.updateTimer(timer);
-      // }
     }, 1000);
+  }
+  stopTimer() {
+    clearInterval(this.interval);
   }
 }
 

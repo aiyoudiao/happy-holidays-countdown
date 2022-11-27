@@ -13,10 +13,9 @@ const createElement = (entity) => {
     gzYear,
     animal,
     index,
+    time,
   } = entity;
-  const timeOut =
-    Date.parse(new Date(`${year}-${month}-${day} 00:00:00`)) -
-    Date.parse(new Date());
+  const timeOut = time - Date.now();
   const pass = timeOut < 0;
   const current = timeOut === 0;
   return `
@@ -57,6 +56,7 @@ export const createAllElement = () => {
       lDate,
       gzYear,
       animal,
+      time,
     } = item;
 
     const element = createElement({
@@ -71,6 +71,7 @@ export const createAllElement = () => {
       gzYear,
       animal,
       index,
+      time,
     });
     elements.push(element);
   });
