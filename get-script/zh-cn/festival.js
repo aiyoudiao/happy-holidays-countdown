@@ -2,11 +2,9 @@ const {
   startYear,
   endYear,
   startMonth,
-  endMonth,
   festivalJsonFilePath,
 } = require("../config");
 const http = require("http");
-const path = require("path");
 const fs = require("fs");
 var zlib = require("zlib");
 

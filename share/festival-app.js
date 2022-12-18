@@ -1,6 +1,7 @@
 import CountdownTimer from "./countdown";
 import festivalJSon from "../data/zh-cn/festival.json";
 
+const oneDayTime = 24 * 60 * 60 * 1000;
 const createElement = (entity) => {
   const {
     year,
@@ -15,16 +16,16 @@ const createElement = (entity) => {
     index,
     time,
   } = entity;
-  const timeOut = time - Date.now();
-  const pass = timeOut < 0;
-  const current = timeOut === 0;
+  const timeOut = Date.now() - time;
+  const pass = timeOut > oneDayTime;
+  const current = timeOut > 0 && timeOut < oneDayTime;
   return `
     <div
     class="main-container"
   >
     <div class="main-title text">
       <span class="next-year"></span>${desc}${
-    pass ? "(💔已过)" : current ? "(😄今天)" : "(🙏倒计时)"
+    pass ? "(😕已过)" : current ? "(😄今天)" : "(😚倒计时)"
   }
     </div>
     <p class="light-text">${year}年${month}月${day}日 星期${cnDay} 农历${lMonth}月${lDate} ${gzYear}年（${animal}年）</p>
@@ -85,7 +86,7 @@ const initTimerList = () => {
     const { time } = item;
     const timer = new CountdownTimer({
       selector: `#holidayCountdown${index}`,
-      targetDate: new Date(time),
+      targetDate: new Date(time + oneDayTime),
     });
     timer.startTimer();
   });
